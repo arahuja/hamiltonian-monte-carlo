@@ -53,6 +53,6 @@ with session.as_default():
                 step_size=0.1, 
                 num_steps=10)
         )
+
+        print(sample)
 ```
-            print(sample)
-    ```
