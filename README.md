@@ -12,18 +12,18 @@ To use HMC, you need to define a log-posterior function (unnormalized)
 Example: mean=0, correlation=0.8 Gaussian
 
 ```python
-def gaussian_log_posterior_correlated(x)
-    covariance_inverse = tf.matrix_inverse(covariance)
-
+def gaussian_log_posterior_correlated(x):
     covariance = tf.constant(
             np.array([
-                [1.0, correlation],
-                [correlation, 1.0]]), 
+                [1.0, 0.8],
+                [0.8, 1.0]]), 
             dtype=tf.float32
         )
+        
+    covariance_inverse = tf.matrix_inverse(covariance)
 
-    Ax = tf.matmul(x, covariance_inverse)
-    xAx = tf.matmul(Ax, tf.transpose(x))
+    xA = tf.matmul(x, covariance_inverse)
+    xAx = tf.matmul(xA, tf.transpose(x))
     return xAx / 2.0
 ```
 
