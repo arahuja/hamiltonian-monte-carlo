@@ -23,8 +23,8 @@ def gaussian_log_posterior(x, covariance):
     """
     covariance_inverse = tf.matrix_inverse(covariance)
 
-    Ax = tf.matmul(x, covariance_inverse)
-    xAx = tf.matmul(Ax, tf.transpose(x))
+    xA = tf.matmul(x, covariance_inverse)
+    xAx = tf.matmul(xA, tf.transpose(x))
     return xAx / 2.0
 
 
